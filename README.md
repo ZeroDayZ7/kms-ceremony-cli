@@ -2,8 +2,6 @@
 
 An offline Command-Line Interface (CLI) utility written in Rust for executing Key Management Service (KMS) key ceremonies. The tool generates cryptographic master and storage keys, splits secrets using Shamir's Secret Sharing Scheme (SSSS), and recovers master keys from active shares.
 
----
-
 ## Features
 
 - **Shamir's Secret Sharing (SSSS)**: Split master keys into configurable total shares ($N$) and recovery thresholds ($T$).
