@@ -26,10 +26,6 @@ impl SecretKey {
     pub fn as_bytes(&self) -> &[u8; KEY_SIZE] {
         &self.0
     }
-
-    pub fn as_mut_bytes(&mut self) -> &mut [u8; KEY_SIZE] {
-        &mut self.0
-    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -63,6 +59,7 @@ pub fn encrypt_storage_key(
     })
 }
 
+#[allow(dead_code)]
 pub fn decrypt_storage_key(
     master_key: &SecretKey,
     container: &EncryptedContainer,

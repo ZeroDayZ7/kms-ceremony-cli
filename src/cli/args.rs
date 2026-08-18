@@ -28,7 +28,12 @@ pub enum Commands {
         #[arg(short = 'd', long, value_name = "DIR", default_value = "./out/shares")]
         shares_dir: PathBuf,
 
-        #[arg(short = 'k', long, value_name = "FILE", default_value = "./recovered.key")]
+        #[arg(
+            short = 'k',
+            long,
+            value_name = "FILE",
+            default_value = "./recovered.key"
+        )]
         output_key: PathBuf,
     },
 

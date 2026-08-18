@@ -57,7 +57,8 @@ pub fn write_share_file(
     };
 
     let json = serde_json::to_string_pretty(&record)?;
-    fs::write(&file_path, json).with_context(|| format!("Failed to write share file {}", file_path.display()))?;
+    fs::write(&file_path, json)
+        .with_context(|| format!("Failed to write share file {}", file_path.display()))?;
 
     Ok(file_path)
 }
@@ -83,8 +84,12 @@ pub fn write_manifest(
 
     let manifest_path = output_dir.join("ceremony_manifest.json");
     let json = serde_json::to_string_pretty(&manifest)?;
-    fs::write(&manifest_path, json)
-        .with_context(|| format!("Failed to write ceremony manifest {}", manifest_path.display()))?;
+    fs::write(&manifest_path, json).with_context(|| {
+        format!(
+            "Failed to write ceremony manifest {}",
+            manifest_path.display()
+        )
+    })?;
 
     Ok(())
 }
@@ -118,6 +123,7 @@ pub fn write_master_key_file(path: &Path, key: &SecretKey) -> Result<()> {
     Ok(())
 }
 
+#[allow(dead_code)]
 pub fn read_master_key_file(path: &Path) -> Result<[u8; KEY_SIZE]> {
     let raw = fs::read_to_string(path)?;
     let cleaned = raw.trim();

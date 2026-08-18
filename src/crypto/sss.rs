@@ -1,10 +1,6 @@
-use crate::crypto::keys::{generate_master_key, SecretKey, KEY_SIZE};
+use crate::crypto::keys::{SecretKey, KEY_SIZE};
 use anyhow::{bail, Result};
 use ssss::{gen_shares, unlock, SsssConfig};
-
-pub fn generate_master_key_secret() -> SecretKey {
-    generate_master_key()
-}
 
 pub fn split_secret(secret: &SecretKey, shares: u8, threshold: u8) -> Result<Vec<(u8, String)>> {
     if shares == 0 {
